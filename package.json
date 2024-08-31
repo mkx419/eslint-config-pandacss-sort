@@ -1,6 +1,6 @@
 {
   "name": "@mkx419/eslint-config-pandacss-sort",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Eslint config for Panda CSS",
   "keywords": [
     "eslint",
