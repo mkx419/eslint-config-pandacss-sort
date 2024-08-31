@@ -1,0 +1,26 @@
+version: 2
+updates:
+  - package-ecosystem: "pnpm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    groups:
+      dependencies:
+        patterns:
+          - "@pandacss/preset-base"
+          - "@pandacss/preset-panda"
+          - "eslint-plugin-perfectionist"
+          - "jiti"
+      dev-dependencies:
+        patterns:
+          - "@eslint/js"
+          - "@pandacss/types"
+          - "@types/eslint-config-prettier"
+          - "@types/eslint__js"
+          - "@types/node"
+          - "eslint"
+          - "eslint-config-prettier"
+          - "prettier"
+          - "tsup"
+          - "typescript"
+          - "typescript-eslint"
