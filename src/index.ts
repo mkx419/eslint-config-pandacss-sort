@@ -1,15 +1,5 @@
-import type { Config, Preset } from "@pandacss/types";
-
-import presetBase from "@pandacss/preset-base";
-import presetPanda from "@pandacss/preset-panda";
-import createJITI from "jiti";
+import { loadConfig } from "@pandacss/config";
 import path from "path";
-
-const jiti = createJITI(import.meta.url);
-
-async function getPreset(preset: Preset | Promise<Preset> | string): Promise<Preset> {
-  return typeof preset === "string" ? (await import(preset)).default : preset;
-}
 
 export default async function getConfig({
   destructureOnly = false,
@@ -32,41 +22,9 @@ export default async function getConfig({
   styledComponents?: boolean;
   type?: "alphabetical" | "line-length" | "natural";
 }) {
-  const config: Config = (await jiti(path.resolve("panda.config.ts"))).default;
-  const utilities: string[] = [];
-  const conditions: string[] = [];
-  const presets: Preset[] = [];
-
-  if (!config.eject) {
-    utilities.push("textStyle", "layerStyle");
-    presets.push(presetBase);
-
-    if (config.presets) {
-      for (const preset of config.presets) {
-        presets.push(await getPreset(preset));
-      }
-    } else {
-      presets.push(presetPanda);
-    }
-  } else {
-    if (config.presets) {
-      for (const preset of config.presets) {
-        presets.push(await getPreset(preset));
-      }
-    }
-  }
-
-  for (const preset of presets) {
-    if (preset.utilities) {
-      const { extend = {}, ...rest } = preset.utilities;
-      utilities.push(...Object.keys(rest), ...Object.keys(extend));
-    }
-
-    if (preset.conditions) {
-      const { extend = {}, ...rest } = preset.conditions;
-      conditions.push(...Object.keys(rest), ...Object.keys(extend));
-    }
-  }
+  const config = (await loadConfig({ cwd: path.resolve() })).config;
+  const utilities = [...Object.keys(config.utilities), "textStyle", "layerStyle"];
+  const conditions = Object.keys(config.conditions);
 
   return {
     rules: {

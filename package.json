@@ -22,20 +22,19 @@
   "files": [
     "./dist"
   ],
-  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "module": "./dist/index.js",
   "main": "./dist/index.cjs",
   "exports": {
     ".": {
       "import": {
-        "default": "./dist/index.js",
-        "types": "./dist/index.d.ts"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
       },
       "require": {
-        "default": "./dist/index.cjs",
-        "types": "./dist/index.d.cts"
-      },
-      "default": "./dist/index.js"
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     }
   },
   "repository": {
@@ -43,7 +42,7 @@
     "url": "git+https://github.com/mkx419/eslint-config-pandacss-sort.git"
   },
   "scripts": {
-    "build": "tsup src/index.ts --format=cjs,esm --target esnext --dts --clean --shims"
+    "build": "tsup src/index.ts --format=cjs,esm --dts"
   },
   "packageManager": "pnpm@9.9.0",
   "engines": {
@@ -56,14 +55,11 @@
     "eslint": ">= 9"
   },
   "dependencies": {
-    "@pandacss/preset-base": "^0.45.2",
-    "@pandacss/preset-panda": "^0.45.2",
-    "eslint-plugin-perfectionist": "^3.3.0",
-    "jiti": "^1.21.6"
+    "@pandacss/config": "^0.45.2",
+    "eslint-plugin-perfectionist": "^3.3.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
-    "@pandacss/types": "^0.45.2",
     "@types/eslint-config-prettier": "^6.11.3",
     "@types/eslint__js": "^8.42.3",
     "@types/node": "^22.5.1",

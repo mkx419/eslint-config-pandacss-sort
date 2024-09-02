@@ -3,6 +3,8 @@
   "exclude": ["./node_modules/**"],
   "compilerOptions": {
     "module": "ESNext",
-    "moduleResolution": "Bundler"
+    "moduleResolution": "Bundler",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "target": "ESNext"
   }
 }

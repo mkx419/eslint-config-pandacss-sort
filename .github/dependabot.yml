@@ -7,14 +7,11 @@ updates:
     groups:
       dependencies:
         patterns:
-          - "@pandacss/preset-base"
-          - "@pandacss/preset-panda"
+          - "@pandacss/config"
           - "eslint-plugin-perfectionist"
-          - "jiti"
       dev-dependencies:
         patterns:
           - "@eslint/js"
-          - "@pandacss/types"
           - "@types/eslint-config-prettier"
           - "@types/eslint__js"
           - "@types/node"
